@@ -1,0 +1,41 @@
+print('|-----Rehbere Hoşgeldiniz. ----|')
+print('|----------1: Listele----------|')
+print('|----------2: Kişi Ekle--------|')
+print('|----------3: Kişi Sil---------|')
+print('|----------4: Kişi Bul---------|')
+print('|----------5: Çıkış Yap--------|')
+
+rehber = {"furkan": 5557411320, "ali": 5478593564, "ahmet": 5322541520}
+
+while 1 :
+    islem = int(input("Lütfen işleminizi belirtiniz: "))
+    if islem == 1:
+        print(rehber)
+
+    
+    if islem == 2:
+        ad = (input("Yeni kişi giriniz: "))
+        rehber[ad] = input("Numarası: ")
+        
+    
+    if islem == 3:
+        kisisil = input("Kimi silmek istiyorsunuz: ")
+        if kisisil in rehber:
+            del rehber[kisisil]
+        else:
+            print("Kişi mevcut değil.")
+
+    
+    if islem == 4:
+        ad = input("İsim giriniz: ")       
+        if ad in rehber :
+            print(rehber[ad])
+        else:
+            print("Böyle bir kişi mevcut değil.")
+
+    
+    if islem == 5:
+        print("Çıkış Yapılıyor Bye Bye")
+        break
+
+
