@@ -1,0 +1,72 @@
+while True:
+    print("Rehbere Hoşgeldiniz. ")
+    print("Listelemek için 1 ")
+    print("Eklemek için 2 ")
+    print("Silmek için 3  ")
+    print("Aramak için 4 ")
+    print("Çıkış için 5 ")
+    islem = input("İşleminiz: ")
+
+    if islem == "1":
+        with open("rehber.txt", "r") as dosya:
+            bilgiler = dosya.readlines()
+            print("{:1} {:13} {:13} {:13} {:16}".format("#", "Adı", "Soyadı", "Numarası", "Adresi"))
+            sira = 0
+            for bilgi in bilgiler:
+                baslik = bilgi.split("/")
+                sira += 1
+                print("{:1} {:13} {:13} {:13} {:16}".format(sira, baslik[0], baslik[1], baslik[2], baslik[3][0:-1]))
+        input("Devam etmek için bir tuşa basınız.")
+
+    elif islem == "2":
+        with open("rehber.txt", "a") as dosya:
+            ad = input("Lütfen isim giriniz : ")
+            soyad = input("Lütfen soy ismini giriniz :")
+            cep = input("Lütfen telefon numarası giriniz : ")
+            adres = input("Lütfen adres giriniz : ")
+            dosya.write(ad + "/" + soyad + "/" + cep + "/" + adres + "\n")
+        input("İşlem başarılı... Devam etmek için bir tuşa basınız.")
+
+    elif islem == "3":
+        siraNo = int(input("Silmek istediğiniz satır sırasını belirtiniz: "))
+        with open("rehber.txt", "r") as dosya:
+            bilgiler = dosya.readlines()
+
+        if siraNo > 0 and siraNo <= len(bilgiler):
+            del bilgiler[siraNo - 1]
+            with open("rehber.txt", "w") as dosya:
+                for bilgi in bilgiler:
+                    dosya.write(bilgi)
+            print("Silme başarıyla gerçekleştirildi. ")
+        else:
+            print("Hatalı satır bilgisi girildi. ")
+        input("İşlem başarılı... Devam etmek için bir tuşa basınız.")
+    elif islem == "4":
+        savead = input("İsim giriniz: ")
+        savesoyad = input("Soyisim giriniz: ")
+        with open("rehber.txt", "r") as dosya:
+            veri=dosya.read()
+            for i in range(len(veri)):
+                if savead in veri:
+                    print("{} adında kayıtlı bir kartvizit bulundu. ".format(savead))
+                    break
+                elif savesoyad in veri:
+                    print("{} soyadında kayıtlı bir kartvizit bulundu.".format(savesoyad))
+                    break
+                elif savead not in veri and savesoyad not in veri :
+                    print("Böyle bir kayıtlı kartvizit bulunamadı.. ")
+                    break
+        input("İşlem başarılı... Devam etmek için bir tuşa basınız.")
+    elif islem == "5":
+        print("Çıkış Yapılıyor bye bye.. ")
+        break
+
+
+
+
+
+
+
+
+
+
